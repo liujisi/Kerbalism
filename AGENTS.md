@@ -27,7 +27,7 @@ Favor correctness, save compatibility, and easy rollback over broad cleanup.
 - Distinguish root-cause exceptions from repeated downstream noise. Report the first meaningful occurrence, affected mod/assembly, and evidence.
 - Use `ModuleManager.ConfigCache` only to inspect the final patched state. It is generated evidence, never a source file.
 - Consult mod source or current authoritative documentation only when local files do not settle behavior or compatibility.
-- Use the Exa MCP search/fetch tools for external web research. Prefer official documentation, repositories, release notes, and maintainer statements; clearly distinguish sourced facts from inference.
+- For external web research, try Codex's built-in web tool once first. If it fails with the known Cloudflare `403` or another backend error, do not retry it in that response; fall back to the Exa MCP search/fetch tools to limit paid Exa usage. Prefer official documentation, repositories, release notes, and maintainer statements, and clearly distinguish sourced facts from inference.
 
 ## Change rules
 
