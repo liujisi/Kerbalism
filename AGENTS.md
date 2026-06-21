@@ -28,6 +28,19 @@ Favor correctness, save compatibility, and easy rollback over broad cleanup.
 - Use `ModuleManager.ConfigCache` only to inspect the final patched state. It is generated evidence, never a source file.
 - Consult mod source or current authoritative documentation only when local files do not settle behavior or compatibility.
 
+## Temporary web-research workaround
+
+Codex web search currently returns a Cloudflare `403` from its internal backend. Do not repeatedly retry it or treat this as a workspace/network configuration problem.
+
+When current external research is required:
+
+1. Continue any independent local investigation.
+2. Give the user a ready-to-paste `WEB RESEARCH REQUEST` containing the exact question, local evidence, relevant versions, primary sources to prioritize, low-confidence sources to avoid, and the required result format.
+3. Ask for a concise conclusion, linked evidence, constraints, uncertainties, and concrete local actions.
+4. Wait for the user to paste the browser model's result, then treat it as supplied external context and clearly distinguish sourced facts from inference.
+
+Do not retry the web tool unless the user explicitly asks. When a requested test confirms that both web search and direct page opening work again, remove this entire temporary section and commit that cleanup.
+
 ## Change rules
 
 - Make the smallest dedicated change that fixes the observed issue. Avoid unrelated formatting, renaming, modernization, or restructuring.
@@ -55,4 +68,3 @@ Do not claim a runtime fix is verified solely because a config parses visually. 
 - Do not run destructive Git commands or discard user changes.
 - In the handoff, state what changed, what evidence supports it, what remains unverified in game, and any save-compatibility concern.
 - Useful commit prefixes: `fix:`, `patch:`, `config:`, `docs:`, and `chore:`.
-
