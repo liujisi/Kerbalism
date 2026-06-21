@@ -1,0 +1,61 @@
+# This is an installed game/mod directory. Ignore vendored content by default and
+# explicitly allow only locally maintained material below.
+/*
+
+# Repository metadata and working documentation.
+!/.gitignore
+!/.gitattributes
+!/AGENTS.md
+!/README.md
+!/docs/
+!/docs/**
+
+# Dedicated local patch package.
+!/zzz_LocalPatches/
+!/zzz_LocalPatches/**
+
+# Existing locally maintained Kerbalism integrations.
+!/zKerbalismBridge/
+!/zKerbalismBridge/**
+!/zKerbalismNative/
+!/zKerbalismNative/**
+!/zKerbalismNFE/
+!/zKerbalismNFE/**
+!/zKerbalismPluginHost/
+!/zKerbalismPluginHost/**
+!/zKerbalismProcess/
+!/zKerbalismProcess/**
+
+# Mod with intentional local configuration edits.
+!/KerbalismModularScience/
+!/KerbalismModularScience/**
+
+# Never version disposable files even inside allowed directories.
+*.bak
+*.tmp
+*.log
+*.old
+*~
+.DS_Store
+Thumbs.db
+
+# KSP / ModuleManager generated state (also documents exclusions if the
+# allowlist is broadened later).
+ModuleManager.ConfigCache
+ModuleManager.ConfigSHA
+ModuleManager.Physics
+ModuleManager.TechTree
+PartDatabase.cfg
+Physics.cfg
+settings.cfg
+toolbar-settings.dat
+FinalFrontier.dat
+PluginData/*.bin
+PluginData/*.cache
+
+# Common build output should source projects be added later.
+bin/
+obj/
+.vs/
+.vscode/
+
