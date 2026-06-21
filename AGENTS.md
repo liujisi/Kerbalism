@@ -27,20 +27,7 @@ Favor correctness, save compatibility, and easy rollback over broad cleanup.
 - Distinguish root-cause exceptions from repeated downstream noise. Report the first meaningful occurrence, affected mod/assembly, and evidence.
 - Use `ModuleManager.ConfigCache` only to inspect the final patched state. It is generated evidence, never a source file.
 - Consult mod source or current authoritative documentation only when local files do not settle behavior or compatibility.
-
-## Temporary web-research workaround
-
-Codex web search currently returns a Cloudflare `403` from its internal backend. Do not treat this as a workspace/network configuration problem.
-
-When current external research is required:
-
-1. Continue any independent local investigation.
-2. Try the web tool exactly once in that response. Do not make a second web-tool call after a `403` or other backend failure.
-3. If it fails, give the user a ready-to-paste `WEB RESEARCH REQUEST` containing the exact question, local evidence, relevant versions, primary sources to prioritize, low-confidence sources to avoid, and the required result format.
-4. Ask for a concise conclusion, linked evidence, constraints, uncertainties, and concrete local actions.
-5. Wait for the user to paste the browser model's result, then treat it as supplied external context and clearly distinguish sourced facts from inference.
-
-Only make the canary attempt when the task actually requires web research; ordinary local work does not need one. When that single attempt succeeds, use the web normally, remove this entire temporary section, and commit that cleanup.
+- Use the Exa MCP search/fetch tools for external web research. Prefer official documentation, repositories, release notes, and maintainer statements; clearly distinguish sourced facts from inference.
 
 ## Change rules
 
