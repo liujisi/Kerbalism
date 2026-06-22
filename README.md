@@ -2,6 +2,15 @@
 
 This Git repository tracks local KSP compatibility patches and intentional configuration edits while treating CKAN-installed mods and paid visual content as external dependencies.
 
+## VS Code workspace
+
+The saved workspace is `D:\Documents\code-workspaces\KSP.code-workspace`. It is the authoritative list of active project roots and currently includes:
+
+- This live `GameData` installation.
+- The Kerbalism source checkout at `\\wsl.localhost\Ubuntu\home\liujisi\projects\Kerbalism`.
+
+Open or inspect the workspace file before assuming the current directory contains every relevant repository; additional roots may be added later. The saved file makes WSL-backed roots directly discoverable, but Codex may still receive only `GameData` as its sandbox root. Accessing another listed root can therefore require explicit filesystem approval even though it is part of the VS Code workspace.
+
 ## Layout
 
 - `zzz_LocalPatches/` — preferred home for new ModuleManager-only fixes.
@@ -18,4 +27,3 @@ The actual installed mod set remains managed by CKAN. Export the CKAN mod list s
 3. Add the narrowest viable patch under `zzz_LocalPatches/Patches/`.
 4. Review the diff, relaunch KSP, and confirm both behavior and the resulting ModuleManager cache/log.
 5. Commit only the focused local fix.
-

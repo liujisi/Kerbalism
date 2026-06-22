@@ -10,6 +10,20 @@ This repository is a working KSP 1 GameData installation, not a conventional sou
 
 Favor correctness, save compatibility, and easy rollback over broad cleanup.
 
+## Discovering VS Code workspace roots
+
+- Do not assume the current process directory or Codex filesystem roots include every folder in the active VS Code workspace. The extension may expose only one root even when VS Code has a multi-root workspace, especially when another root uses a WSL virtual path.
+- First inspect a saved `.code-workspace` file when one is present. For an untitled workspace on Windows, inspect `%APPDATA%\Code\Workspaces\*\workspace.json`; these files contain the active `folders` entries. `%APPDATA%\Code\User\globalStorage\storage.json` records the last active workspace and can identify which generated workspace file is current.
+- Resolve Windows paths normally. Resolve WSL entries such as `\\wsl.localhost\Ubuntu\home\user\project` through that UNC path, or translate `vscode-remote://wsl+<distribution>/path` to the corresponding WSL filesystem path.
+- Treat every folder listed in the active workspace as relevant context, including roots added in the future. If a listed root is not exposed by Codex or lies outside the writable sandbox, report that limitation and request the necessary access rather than concluding that the directory does not exist.
+
+## Kerbalism source checkout
+
+- The VS Code workspace also has a top-level `Kerbalism` directory, parallel to the `GameData` workspace root. It may only be discoverable through the VS Code workspace-root methods above because it is added using a WSL virtual path rather than mounted as a Codex filesystem root.
+- This directory is a checked-out Kerbalism Git repository containing the source for both Kerbalism core and its official default configuration. Codex has full ownership of this checkout and may use or modify it when source-level investigation or development is appropriate.
+- Do not confuse that repository with `GameData/Kerbalism`, which is the released, CKAN-managed copy installed in the live game. Treat `GameData/Kerbalism` as a vendored dependency: inspect it for installed-version evidence, but do not edit it by default.
+- For Kerbalism behavior, native code, or examples of how the official default config handles an integration, consult the top-level `Kerbalism` repository. Use the live installation and `ModuleManager.ConfigCache` to verify what the game actually loaded.
+
 ## Repository boundaries
 
 - Treat CKAN-installed mod directories as vendored dependencies. Inspect them as needed, but do not edit them by default.
