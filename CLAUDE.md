@@ -52,3 +52,32 @@ When `Edit` fails on a tab-indented file with a whitespace error, fall back to `
 cd /mnt/c/Users/pherl/src/Kerbalism
 git push liujisi master
 ```
+
+### Git commit messages
+
+**Use the syntax that matches the shell.** `@'...'@` is PowerShell here-string syntax — it only works in PowerShell. In Bash (Git Bash or WSL), use `-m` per paragraph:
+
+```bash
+# Bash — correct
+git commit -m "subject" -m "body paragraph 1" -m "body paragraph 2"
+
+# Also fine in Bash
+git commit -m "subject
+
+body paragraph 1
+
+body paragraph 2"
+```
+
+```powershell
+# PowerShell — correct
+git commit -m @'
+subject
+
+body paragraph 1
+
+body paragraph 2
+'@
+```
+
+**Never use `@'...'@` in Bash** — Bash treats the `@` marks as literal text, and they end up in the commit message.
