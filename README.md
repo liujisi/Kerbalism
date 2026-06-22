@@ -7,9 +7,9 @@ This Git repository tracks local KSP compatibility patches and intentional confi
 The saved workspace is `D:\Documents\code-workspaces\KSP.code-workspace`. It is the authoritative list of active project roots and currently includes:
 
 - This live `GameData` installation.
-- The Kerbalism source checkout at `\\wsl.localhost\Ubuntu\home\liujisi\projects\Kerbalism`.
+- The Kerbalism source checkout at `C:\Users\pherl\src\Kerbalism`.
 
-Open or inspect the workspace file before assuming the current directory contains every relevant repository; additional roots may be added later. The saved file makes WSL-backed roots directly discoverable, but Codex may still receive only `GameData` as its sandbox root. Accessing another listed root can therefore require explicit filesystem approval even though it is part of the VS Code workspace.
+Open or inspect the workspace file before assuming the current directory contains every relevant repository; additional roots may be added later. The saved file makes the Kerbalism source directly discoverable as a Windows path.
 
 ## Layout
 
