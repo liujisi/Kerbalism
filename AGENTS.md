@@ -77,8 +77,6 @@ Favor correctness, save compatibility, and easy rollback over broad cleanup.
 - Consult mod source or current authoritative documentation only when local files do not settle behavior or compatibility.
 - For external web research, try Codex's built-in web tool once first. If it fails with the known Cloudflare `403` or another backend error, do not retry it in that response; fall back to the Exa MCP search/fetch tools to limit paid Exa usage. Prefer official documentation, repositories, release notes, and maintainer statements, and clearly distinguish sourced facts from inference.
 
-## Diagnostic discipline
-
 ## Change rules
 
 - Make the smallest dedicated change that fixes the observed issue. Avoid unrelated formatting, renaming, modernization, or restructuring.
