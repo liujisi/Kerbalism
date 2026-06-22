@@ -31,4 +31,12 @@ When `Edit` fails on a tab-indented file with a whitespace error, fall back to `
 
 ## Build
 
-Kerbalism builds via Visual Studio 2022. Open `C:\Users\pherl\src\Kerbalism\Kerbalism.sln`, set `KerbalismBuild` as start project, Debug configuration. Build output auto-copies to `GameData\Kerbalism\`. No command-line `msbuild` available in PATH yet.
+```powershell
+& "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" "C:\Users\pherl\src\Kerbalism\Kerbalism.sln" -v:m
+```
+
+- MSBuild 17.14 from VS 2022 Community (not in PATH, use full path above)
+- `KerbalismBuild` is the start project — it orchestrates KerbalismBootstrap → Kerbalism → deploy
+- Debug configuration only (release requires archive passwords)
+- Output goes to `BuildSystem\BinariesDebug\` then auto-copies `*.dll` + `*.pdb` to `GameData\Kerbalism\`
+- `UserConfigDevEnv.xml` at `BuildSystem\` defines KSP path and version constants
