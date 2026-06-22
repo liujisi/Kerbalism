@@ -40,3 +40,15 @@ When `Edit` fails on a tab-indented file with a whitespace error, fall back to `
 - Debug configuration only (release requires archive passwords)
 - Output goes to `BuildSystem\BinariesDebug\` then auto-copies `*.dll` + `*.pdb` to `GameData\Kerbalism\`
 - `UserConfigDevEnv.xml` at `BuildSystem\` defines KSP path and version constants
+
+## Git
+
+- **Upstream:** `git@github.com:Kerbalism/Kerbalism.git` (origin)
+- **Fork:** `git@github.com:liujisi/Kerbalism.git` (liujisi) — push PRs here
+- **Push from WSL** — SSH keys with passphrase live in WSL; the agent there has them unlocked. Windows Git Bash SSH can use the key too but needs `ssh-add` + passcode.
+
+```bash
+# In WSL
+cd /mnt/c/Users/pherl/src/Kerbalism
+git push liujisi master
+```
