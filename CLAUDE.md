@@ -81,3 +81,5 @@ body paragraph 2
 ```
 
 **Never use `@'...'@` in Bash** — Bash treats the `@` marks as literal text, and they end up in the commit message.
+
+- **No Co-Authored-By** — do not add `Co-Authored-By` trailers to commit messages.
