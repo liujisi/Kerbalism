@@ -31,10 +31,6 @@
 !/KerbalismModularScience/
 !/KerbalismModularScience/**
 
-# Mod with intentional local configuration edits.
-!/SterlingSystemsKerbalism/
-!/SterlingSystemsKerbalism/**
-
 # Never version disposable files even inside allowed directories.
 *.bak
 *.tmp
