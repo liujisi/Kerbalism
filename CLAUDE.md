@@ -3,7 +3,7 @@
 ## Environment
 
 - **Platform:** Windows 11, VS Code extension
-- **Shells:** PowerShell (primary), Git Bash (POSIX, for `grep`/`sed`/`find`)
+- **Shells:** PowerShell for all git operations. Git Bash only for `grep`/`sed`/`find` against file content. Never use WSL for git — slow startup and path translation issues.
 - **Node.js:** v24.17.0 at `C:\Program Files\nodejs\`
 
 ## Workspace
@@ -43,15 +43,34 @@ When `Edit` fails on a tab-indented file with a whitespace error, fall back to `
 
 ## Git
 
-- **Upstream:** `git@github.com:Kerbalism/Kerbalism.git` (origin)
-- **Fork:** `git@github.com:liujisi/Kerbalism.git` (liujisi) — push PRs here
-- **Push from WSL** — SSH keys with passphrase live in WSL; the agent there has them unlocked. Windows Git Bash SSH can use the key too but needs `ssh-add` + passcode.
+**Two repos, similar remote names — verify which repo you're in before any git command:**
 
-```bash
-# In WSL
-cd /mnt/c/Users/pherl/src/Kerbalism
-git push liujisi master
+| Repo | Path | Purpose |
+|------|------|---------|
+| GameData | `d:\Games\steamapps\common\Kerbal Space Program\GameData` | Live KSP install — **minimal git changes here** |
+| Kerbalism source | `C:\Users\pherl\src\Kerbalism` | Development, fixes, PRs |
+
+**Step back:** If a git command produces unexpected output (empty results, missing remotes, wrong branches), stop and investigate. Do not retry with a different tool or shell — verify which repo you're in first with `pwd` + `git remote -v`.
+
+**Kerbalism source remote naming:**
+
+| Remote | URL | Purpose |
+|--------|-----|---------|
+| `origin` | `git@github.com:liujisi/Kerbalism.git` | Fork — push fix branches for PRs |
+| `upstream` | `git@github.com:Kerbalism/Kerbalism.git` | Official — fetch latest, base branches |
+
+**Branch workflow** (Kerbalism source repo):
+
 ```
+upstream/master  ←── fix/<name>  ←── main (local only, combined DLL)
+                    (push to origin for PR)
+```
+
+- `master` may contain older in-review fixes — don't disturb it.
+- `main` is local-only, never pushed. Rebase fixes onto it for a combined gameplay DLL.
+- Each fix gets its own branch off `upstream/master`, pushed to `origin` for PR.
+
+`GIT_SSH_COMMAND` is set automatically via `.claude/settings.local.json` — no manual setup needed for git operations.
 
 ### Git commit messages
 
