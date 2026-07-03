@@ -15,6 +15,10 @@
 !/zzz_LocalPatches/
 !/zzz_LocalPatches/**
 
+# Local dense variants of CryoTanks stack tanks.
+!/DenseCryoTanks/
+!/DenseCryoTanks/**
+
 # Existing locally maintained Kerbalism integrations.
 !/zKerbalismBridge/
 !/zKerbalismBridge/**
